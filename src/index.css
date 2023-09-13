@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+
+    --yellow: #E8C547;
+    --gray: #4D5359;
+    --green: #5FBF8C;
+    --darkergreen: #148046;
+    --darkgreen: #22583C;
+    --offwhite: #F8F4F9;
+    --greenwhite: #b8e6ce;
+    --white: #fafafa;
+    --graywhite: #eaeaea;
+    --black: #2A2B2A;
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100vw !important;
+    width: 100vw !important;
+    font-family: Mulish, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                 sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100vw !important;
+    background: rgb(252, 252, 252);
+    /* background: var(--black); */
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+                 monospace;
+}

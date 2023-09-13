@@ -1,0 +1,90 @@
+/* search.module.css.simon_search_container */
+.simon_search_container {
+    position: relative;
+}
+
+/* search.module.css.simon_search_bar */
+.simon_search_bar {
+    transition: border 0.3s;
+    width: 100%;
+    border-radius: 5px 5px 5px 5px; 
+
+    caret-color: var(--green);
+
+    @apply border border-slate-200 p-2;
+}
+
+.simon_search_bar:hover {
+    @apply border-slate-300;
+}
+
+.simon_search_bar:focus {
+    border-radius: 5px 5px 0px 0px !important; 
+
+    outline: none;
+    @apply shadow border-slate-300;
+}
+
+/* search.module.css.simon_search_popup */
+.simon_search_popup {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+
+    background: var(--white);
+    color: var(--black);
+
+    opacity: 0;
+
+    padding: 5px 0;
+    border-radius: 0px 0px 5px 5px !important; 
+
+    border-top: 0;
+
+    @apply border border-slate-300 shadow;
+}
+
+/* search.module.css.simon_search_popup_item */
+.simon_search_popup_item {
+    color: var(--gray);
+    font-size: 15px;
+
+    cursor: pointer;
+
+    padding: 10px 10px;
+}
+
+.simon_search_popup_item:hover {
+    background-color: var(--graywhite) !important;
+    cursor: pointer;
+}
+
+/* search.module.css.simon_search_loading */
+.simon_search_loading {
+    color: var(--gray);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px;
+    font-style: italic;
+    animation: Pulsate 3s linear infinite;
+}
+
+@keyframes Pulsate {
+    from { opacity: 0.9; }
+    50% { opacity: 0.7; }
+    to { opacity: 0.9; }
+}
+
+/* search.module.css.simon_search_toast */
+.simon_search_toast {
+    position: absolute;
+    float: right;
+    right: 10px;
+    font-size: 13px;
+    background: var(--background-light-accent);
+    padding: 3px 10px;
+    border-radius: 8px;
+    transform: translateY(8px);
+
+    transition: opacity 0.3s;
+}
