@@ -86,7 +86,7 @@ export default function SearchBar({dispatch}) {
 
             <input className={"simon-search-bar " + styles.simon_search_bar}
                    inputmode="search"
-                   value={query} placeholder={"Ask me anything..."}
+                    value={query} placeholder={"A course title, a WAYs/DB requirement, an instructor, a pleading to the AI bot volunteering its time..."}
                    onKeyDown={(e) => {
                        if (e.key == "ArrowDown") {
                            setHighlighted(Math.min(highlighted+1,
@@ -148,10 +148,10 @@ export default function SearchBar({dispatch}) {
                         key={text}
                             onClick={(e) => {
                                 setHighlighted(-1);
-                                setQuery(text);
+                                setQuery(text.split(":")[1].split("-")[0].trim());
                                 setEditToast(false);
-                                dispatchHandler(text.split(":")[0].trim());
-                            }}>{text.split(":")[0].trim()}</li>
+                                dispatchHandler(text.split(":")[1].split("-")[0].trim());
+                            }}>{text.split(":")[1].split("-")[0].trim()}</li>
                     );
                 })()}
             </ul>
