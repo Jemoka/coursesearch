@@ -40,7 +40,6 @@ export default function Results({query, alertDone}) {
                     } else {
                         str = (new TextDecoder().decode(value));
                     }
-                    console.log(str);
                     let res;
                     try {
                         res = JSON.parse(str).output;
@@ -71,7 +70,9 @@ export default function Results({query, alertDone}) {
                 <div className={"simon-result-links-container " +
                                 styles.simon_result_links_container}>
                     {queryResults.search_results.map(({headline, resource}) => {
-                        let link = resource.chunk.metadata.source;
+                        let metadata = JSON.parse(resource.chunk.metadata.source);
+                        let link = `https://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&page=0&catalog=&academicYear=&q=${metadata.number}&collapse=`;
+                        let attrs = metadata.attrs;
                         let [before, after] = resource.chunk.text.split(resource.quote);
                         if (!after) 
                             after = "";
@@ -81,7 +82,7 @@ export default function Results({query, alertDone}) {
                             <div className={"simon-result " +
                                             styles.simon_result}
                                  key={link+headline+resource.quote}>
-                                <a href={link} className={"simon-headline "+styles.simon_headline}>{headline} <span className={"simon-link "+styles.simon_link}>{link}</span></a>
+                            <a href={link} className={"simon-headline "+styles.simon_headline}>{headline} <br /><span className={"simon-link "+styles.simon_link}><span className="course-key">Number:</span><span className="course-value">{metadata.number}</span> | <span className="course-key">Terms:</span><span className="course-value">{attrs.Terms}</span> | <span className="course-key">Units:</span><span className="course-value">{attrs.Units}</span> | <span className="course-key">Requirements Fufilled:</span><span className="course-value">{attrs["UG Reqs"]}</span> | <span className="course-key">Instructors:</span><span className="course-value">{attrs["Instructors"] ? attrs["Instructors"].join(", ") : "Unknown"}</span> </span></a>
                                 <div className={"simon-resource "+styles.simon_resource}>
                                     <span>{before.slice(-200)}</span> <span className={"simon-resource-quote "+styles.simon_resource_quote}>{resource.quote}</span><span>{after.slice(0,200)}</span></div>
                             </div>
@@ -91,7 +92,7 @@ export default function Results({query, alertDone}) {
                 </div>
             </div>
 
-            {(isDone == false) ? <div className="simon-loadbox-alt" style={{fontStyle:"italic", color: "var(--darkgreen)"}}><div className="lds-facebook"><div></div><div></div><div></div></div> {"Digging through the wiki..."}</div> : <></>}
+            {(isDone == false) ? <div className="simon-loadbox-alt" style={{fontStyle:"italic", color: "var(--darktheme)"}}><div className="lds-facebook"><div></div><div></div><div></div></div> {"Exploring courses..."}</div> : <></>}
         </div>
     )
 }

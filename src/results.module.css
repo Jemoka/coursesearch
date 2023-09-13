@@ -25,17 +25,19 @@
     font-weight: 600;
     font-style: italic;
     /* border-bottom: solid 1px var(--background-accent); */
-    color: var(--darkgreen);
+    color: var(--darktheme);
     transition: border 0.3s;
 }
 
 .simon_link {
-    font-weight: 300;
-    font-size: 8px;
-    color: var(--gray);
-    opacity: 0.4;
-    transform: translateX(-1px);
+    display: block;
+    /* font-weight: 300; */
+    font-size: 11px;
+    color: var(--lighttheme);
+    opacity: 0.8;
+    transform: translate(-1px, -7px);
     display: inline-block;
+    padding-top: 8px;
 }
 
 .simon_resource {

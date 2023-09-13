@@ -86,7 +86,7 @@ export default function SearchBar({dispatch}) {
 
             <input className={"simon-search-bar " + styles.simon_search_bar}
                    inputmode="search"
-                    value={query} placeholder={"A course title, a WAYs/DB requirement, an instructor, a pleading to the AI bot volunteering its time..."}
+        value={query} placeholder={"anything you want to search, like \"three unit STEM class about french cooking in winter quarter\""}
                    onKeyDown={(e) => {
                        if (e.key == "ArrowDown") {
                            setHighlighted(Math.min(highlighted+1,
@@ -98,9 +98,9 @@ export default function SearchBar({dispatch}) {
                            e.preventDefault();
                        } else if (e.key == "Enter") {
                            if (highlighted != -1) {
-                               dispatchHandler(suggestResults[highlighted]);
-                               setQuery(suggestResults[highlighted]);
-                               e.target.value = suggestResults[highlighted];
+                               dispatchHandler(suggestResults[highlighted].split(":")[1].split("-")[0].trim());
+                               setQuery(suggestResults[highlighted].split(":")[1].split("-")[0].trim());
+                               e.target.value = suggestResults[highlighted].split(":")[1].split("-")[0].trim();
                                setHighlighted(-1);
                            } else dispatchHandler(query);
                            e.target.blur();
