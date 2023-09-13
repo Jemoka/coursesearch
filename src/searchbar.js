@@ -28,7 +28,7 @@ function useSuggest(query) {
     const { data, error, isLoading } =  useSWRImmutable(finalURL, async (path) => {
         let res = await (await (fetch(path, {
             headers: new Headers({
-                'Authorization': 'Bearer 6ab69096-3bb4-422e-afc5-df032818b3c3', 
+                'Authorization': 'Bearer stanford-2324', 
             })
         }))).json();
         return res.response;
@@ -145,13 +145,13 @@ export default function SearchBar({dispatch}) {
                                        styles.simon_search_popup_item}
                             style={{backgroundColor: i==highlighted ?
                                     "var(--offwhite)" : "inherit"}}
-                            key={text}
+                        key={text}
                             onClick={(e) => {
                                 setHighlighted(-1);
                                 setQuery(text);
                                 setEditToast(false);
-                                dispatchHandler(text);
-                            }}>{text}</li>
+                                dispatchHandler(text.split(":")[0].trim());
+                            }}>{text.split(":")[0].trim()}</li>
                     );
                 })()}
             </ul>

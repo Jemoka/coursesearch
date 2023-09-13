@@ -21,7 +21,7 @@ export default function Results({query, alertDone}) {
             baseURL.searchParams.append('response', "streaming");
             let reader = (await fetch(baseURL.href, {
                 headers: new Headers({
-                    'Authorization': 'Bearer 6ab69096-3bb4-422e-afc5-df032818b3c3', 
+                    'Authorization': 'Bearer stanford-2324', 
                 }),
             })).body.getReader();
 
